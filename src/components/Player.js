@@ -7,11 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Player = () => {
   return (
-    <div>
+    <>
       <div className='player'>
         <div className='time-control'>
           <p>Start time</p>
-          <input type='range' name='' id='' />
+          <input type='range'  />
           <p>End Time</p>
         </div>
         <div className='play-control'>
@@ -24,7 +24,7 @@ const Player = () => {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
