@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import Library from './components/Library';
 import Player from './components/Player';
 import Song from './components/Song';
 import chillhop from './data';
-import './styles/app.scss';
 
 const App = () => {
   const [songs, setSongs] = useState(chillhop());
@@ -13,6 +13,7 @@ const App = () => {
     <div>
       <Song currentSong={currentSong} />
       <Player {...{ currentSong, isPlaying, setIsPlaying }} />
+      <Library songs={songs} />
     </div>
   );
 };
