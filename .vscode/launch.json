@@ -9,7 +9,7 @@
       "port": 9222,
       "request": "attach",
       "type": "pwa-chrome",
-      "urlFilter": "http://localhost:3000*",
+      "urlFilter": "http://localhost:3001*",
       "webRoot": "${workspaceFolder}/src"
     }
   ]
