@@ -5,23 +5,13 @@ import {
   faPlay,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
-const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
+const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef }) => {
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,
   });
-
-  const audioRef = useRef(null);
-  const playSongHandler = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
 
   const timeUpdateHandler = ({ target }) => {
     const { currentTime, duration } = target;
@@ -55,7 +45,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
         <div className='play-control'>
           <FontAwesomeIcon className='skip-back' icon={faAngleLeft} size='2x' />
           <FontAwesomeIcon
-            onClick={playSongHandler}
+            onClick={() => setIsPlaying((prev) => !prev)}
             className='play'
             icon={isPlaying ? faPause : faPlay}
             size='2x'

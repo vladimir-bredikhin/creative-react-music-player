@@ -1,8 +1,9 @@
 const LibrarySong = ({ song, setCurrentSong }) => {
   const { cover, name, artist } = song;
 
+  const classes = ['song', song.active ? 'active' : ''];
   return (
-    <div className='song' onClick={() => setCurrentSong(song)}>
+    <div className={classes.join(' ')} onClick={() => setCurrentSong(song)}>
       <img src={cover} alt={name} />
       <div className='description'>
         <h3>{name}</h3>
