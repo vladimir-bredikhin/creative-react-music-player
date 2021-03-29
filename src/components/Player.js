@@ -2,16 +2,24 @@ import {
   faAngleLeft,
   faAngleRight,
   faPause,
-  faPlay,
+  faPlay
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef }) => {
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,
   });
+
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [currentSong, isPlaying, audioRef]);
 
   const timeUpdateHandler = ({ target }) => {
     const { currentTime, duration } = target;

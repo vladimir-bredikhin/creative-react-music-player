@@ -13,17 +13,7 @@ const App = () => {
   useEffect(() => {
     currentSong.active = true;
     setSongs((prev) => prev.map((s) => ({ ...s, active: s === currentSong })));
-
-    isPlaying && audioRef.current.play();
-  }, [currentSong, isPlaying]);
-
-  useEffect(() => {
-    if (isPlaying) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
-    }
-  }, [isPlaying]);
+  }, [currentSong]);
 
   return (
     <div>

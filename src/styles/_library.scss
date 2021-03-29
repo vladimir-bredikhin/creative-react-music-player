@@ -21,7 +21,7 @@
       transition: all 0.1s ease-out;
 
       &.active {
-        background-color: rgba(215, 221, 255, 0.3);
+        background-color: rgb(215, 221, 255);
       }
 
       img {
@@ -41,7 +41,7 @@
       }
 
       &:hover {
-        background-color: rgb(215, 221, 255);
+        background-color: rgba(215, 221, 255, 0.5);
         box-shadow: 2px 2px 50px rgb(204, 204, 204);
         transform: scale(1.1);
       }
