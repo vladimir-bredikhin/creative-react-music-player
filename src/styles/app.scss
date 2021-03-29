@@ -1,6 +1,7 @@
 @import './song';
 @import './player';
 @import './library';
+@import './nav';
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,700&display=swap');
 
@@ -39,7 +40,8 @@ p {
   color: rgb(54, 54, 54);
 }
 
-h3, h4 {
+h3,
+h4 {
   font-weight: 400;
-  color:rgb(100,100,100);
+  color: rgb(100, 100, 100);
 }

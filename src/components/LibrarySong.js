@@ -3,7 +3,7 @@ const LibrarySong = ({ song, setCurrentSong }) => {
 
   return (
     <div
-      className={`song ${song.active ? 'active' : ''}`}
+      className={`song${song.active ? ' active' : ''}`}
       onClick={() => setCurrentSong(song)}
     >
       <img src={cover} alt={name} />
