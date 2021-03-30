@@ -18,11 +18,25 @@ const App = () => {
     setSongs((prev) => prev.map((s) => ({ ...s, active: s === currentSong })));
   }, [currentSong]);
 
+  const skipTrackHandler = (step) => {
+    const currentSongIdx = songs.findIndex((s) => s.id === currentSong.id);
+    const newSongIdx = (songs.length + currentSongIdx + step) % songs.length;
+    setCurrentSong(songs[newSongIdx]);
+  };
+
   return (
     <div>
       <Nav {...{ setOpenLibrary }} />
       <Song {...{ currentSong }} />
-      <Player {...{ currentSong, isPlaying, setIsPlaying, audioRef }} />
+      <Player
+        {...{
+          currentSong,
+          isPlaying,
+          setIsPlaying,
+          audioRef,
+          skipTrackHandler,
+        }}
+      />
       <Library {...{ songs, setCurrentSong, openLibrary }} />
     </div>
   );
