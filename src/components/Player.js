@@ -34,7 +34,7 @@ const Player = ({
       ...songInfo,
       currentTime,
       duration,
-      currentTimePct: Math.round((100 * currentTime) / duration),
+      currentTimePct: Math.round((100 * currentTime) / duration) || 0,
     });
   };
 
@@ -44,12 +44,12 @@ const Player = ({
       : '0:00';
 
   const dragHandler = ({ target: { value: currentTime } }) => {
-    setSongInfo({ ...songInfo, currentTime });
+    setSongInfo(() => ({ ...songInfo, currentTime }));
     audioRef.current.currentTime = currentTime;
   };
 
   const { currentTime, duration, currentTimePct } = songInfo;
-  const [fromColor, toColor] = currentSong.color;
+  const [fromColor, toColor] = currentSong?.color;
   return (
     <>
       <div className='player'>
@@ -102,6 +102,7 @@ const Player = ({
           src={currentSong.audio}
           onLoadedMetadata={timeUpdateHandler}
           onTimeUpdate={timeUpdateHandler}
+          onEnded={() => skipTrackHandler(1)}
         ></audio>
       </div>
     </>

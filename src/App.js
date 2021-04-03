@@ -21,7 +21,7 @@ const App = () => {
   const skipTrackHandler = (step) => {
     const currentSongIdx = songs.findIndex((s) => s.id === currentSong.id);
     const newSongIdx = (songs.length + currentSongIdx + step) % songs.length;
-    setCurrentSong(songs[newSongIdx]);
+    setCurrentSong(() => songs[newSongIdx]);
   };
 
   return (
