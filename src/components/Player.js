@@ -17,6 +17,7 @@ const Player = ({
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,
+    currentTimePct: 0,
   });
 
   useEffect(() => {
@@ -29,7 +30,12 @@ const Player = ({
 
   const timeUpdateHandler = ({ target }) => {
     const { currentTime, duration } = target;
-    setSongInfo({ ...songInfo, currentTime, duration });
+    setSongInfo({
+      ...songInfo,
+      currentTime,
+      duration,
+      currentTimePct: Math.round((100 * currentTime) / duration),
+    });
   };
 
   const getTime = (time) =>
@@ -42,18 +48,33 @@ const Player = ({
     audioRef.current.currentTime = currentTime;
   };
 
+  const { currentTime, duration, currentTimePct } = songInfo;
+  const [fromColor, toColor] = currentSong.color;
   return (
     <>
       <div className='player'>
         <div className='time-control'>
-          <p>{getTime(songInfo.currentTime)}</p>
-          <input
-            type='range'
-            min={0}
-            max={songInfo.duration || 0}
-            value={songInfo.currentTime}
-            onChange={dragHandler}
-          />
+          <p>{getTime(currentTime)}</p>
+          <div
+            className='track'
+            style={{
+              background: `linear-gradient(to right, ${fromColor}, ${toColor})`,
+            }}
+          >
+            <input
+              type='range'
+              min={0}
+              max={duration || 0}
+              value={currentTime}
+              onChange={dragHandler}
+            />
+            <div
+              className='animate'
+              style={{ transform: `translateX(${currentTimePct}%)` }}
+            >
+              {' '}
+            </div>
+          </div>
           <p>{getTime(songInfo.duration)}</p>
         </div>
         <div className='play-control'>
