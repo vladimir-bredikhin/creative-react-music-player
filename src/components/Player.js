@@ -7,6 +7,8 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 
+const INITIAL_TITLE = 'Creative React Music Player';
+
 const Player = ({
   currentSong,
   isPlaying,
@@ -21,11 +23,16 @@ const Player = ({
   });
 
   useEffect(() => {
+    let title;
     if (isPlaying) {
       audioRef.current.play();
+      title = `${currentSong.name} by ${currentSong.artist}`;
     } else {
       audioRef.current.pause();
+      title = INITIAL_TITLE;
     }
+
+    document.title = title;
   }, [currentSong, isPlaying, audioRef]);
 
   const timeUpdateHandler = ({ target }) => {
