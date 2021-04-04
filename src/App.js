@@ -25,7 +25,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className={`App${openLibrary ? ' library-active' : ''}`}>
       <Nav {...{ setOpenLibrary }} />
       <Song {...{ currentSong }} />
       <Player
