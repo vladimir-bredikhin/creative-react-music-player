@@ -1,3 +1,15 @@
+Learnt basic React.js concepts:
+* functional components
+* props
+* conditional rendering
+* useState
+* useEffect, emulation of componentDidMount lifecycle hook
+* useRef
+* conditional styling with template strings and ternary operator
+* SCSS partials styling
+
+The final work is published on GitHub pages
+
 # [Demo](https://vladimir-bredikhin.github.io/creative-react-music-player)
 
 # Getting Started with Create React App
